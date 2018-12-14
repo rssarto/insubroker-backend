@@ -22,6 +22,16 @@ public class PersonController {
 		return new PersonModel("ricardo.soares.sarto@gmail.com", "Ricardo Sarto", "123456");
 	}
 	
+	@GetMapping("/person/email/{email}")
+	@ResponseStatus(code=HttpStatus.OK)
+	public PersonModel getPersonByEmail(@PathVariable String email) {
+		PersonModel findByLogin = this.personRepository.findByLogin(email);
+		if( findByLogin != null ) {
+			return findByLogin;
+		}
+		throw new PersonNotFoundException(String.format("Person not found using e-mail: %1s", email));
+	}
+	
 	@PostMapping("/person")
 	@ResponseStatus(code=HttpStatus.OK)
 	public void addPerson(@Valid @RequestBody PersonModel person) {
