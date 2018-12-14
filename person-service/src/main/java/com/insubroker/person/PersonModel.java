@@ -21,7 +21,7 @@ public class PersonModel {
 	
 	@NotBlank(message="Email cannot be null or empty")
 	@Email(message="Invalid email address")
-	private String email;
+	private String login;
 	
 	@NotBlank(message="Nome cannot be null or empty")
 	@Length(min=2, message="Nome needs to have at least 2 characters")
@@ -36,16 +36,16 @@ public class PersonModel {
 	
 	public PersonModel(String email, String nome, String senha) {
 		super();
-		this.email = email;
+		this.login = email;
 		this.nome = nome;
 		this.senha = senha;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getLogin() {
+		return login;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLogin(String email) {
+		this.login = email;
 	}
 	public String getNome() {
 		return nome;
@@ -62,6 +62,6 @@ public class PersonModel {
 
 	@Override
 	public String toString() {
-		return String.format("nome {1}, e-mail {2}, senha {3}", this.nome, this.email, this.senha);
+		return String.format("nome {1}, e-mail {2}, senha {3}", this.nome, this.login, this.senha);
 	}
 }
